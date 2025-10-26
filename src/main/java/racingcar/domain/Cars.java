@@ -55,4 +55,21 @@ public class Cars {
 		}
 		return max;
 	}
+
+	/**
+	 * Car로 구성된 List 에서 maxPosition() 함수를 이용하여 현재 위치가
+	 * 최대 위치인 Car 들을 찾아 해당 자동차의 이름을 List 에 추가
+	 *
+	 * @return 최대 위치에 있는 자동차들의 이름으로 구성된 List 반환
+	 */
+	public List<String> winnerNames() {
+		int max = maxPosition();
+		List<String> names = new ArrayList<>();
+		for (Car c : cars) {
+			if (c.position() == max) {
+				names.add(c.name());
+			}
+		}
+		return names;
+	}
 }
