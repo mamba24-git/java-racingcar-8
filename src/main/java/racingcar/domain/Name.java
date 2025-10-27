@@ -25,7 +25,10 @@ public final class Name {
 	 * @throws IllegalArgumentException value가 null 이거나, 길이가 5보다 큰 경우
 	 */
 	public Name(String value) {
-		if (value == null) {
+		if ((value == null) || (value.isEmpty())) {
+			throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
+		}
+		if (value.trim().isEmpty()) {
 			throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
 		}
 		if (value.length() > MAX_LEN) {
