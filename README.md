@@ -31,7 +31,6 @@
    - [x] `Name` 값 객체: 공백/빈값/6자 이상 `IllegalArgumentException`
    - [x] `TryCount` 값 객체: 문자열 입력에서 자연수만 허용, 아니면 `IllegalArgumentException`
 2. 도메인 동작
-   - [ ] `RandomMovePolicy`: 경계값 검증(3 → 정지, 4 → 전진)
    - [x] `Car.tryMove(policy)`: 전진/정지에 따른 위치 변화 검증
    - [x] `Cars`: `maxPosition()` 및 `winners()`
 3. 출력 포맷 확인
