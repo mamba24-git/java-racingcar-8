@@ -22,12 +22,17 @@
    - [x] 특정 시점에서 특정 차의 현재 상태를 규격에 맞는 문자열로 변환
 4. 예외 및 종료
    - [x] 오입력 시 `IllegalArgumentException` 을 발생시키고 애플리케이션 종료
-5. 테스트
-   - [x] 각종 입력 값 처리 검증
-   - [ ] 이름 파싱 및 검증 (길이, 빈값, 구분자 형식(쉼표))
-   - [ ] 시도 횟수 검증 (정수, 1 이상 `MAX_VALUE` 이하)
-   - [ ] 전진 시도 성공 및 실패 (난수 4 이상 전진, 3 이하 정지)
-   - [ ] 전진 시도 성공 및 실패 시 자동차 위치 이동 수치 검증
-   - [ ] 여러 라운드 진행 시 자동차 위치(누적 이동 수치) 검증
-   - [ ] 단독/공동 우승 판정 검증
-   - [ ] 출력 포맷 테스트
+## 테스트
+1. 입력/파싱 검증
+   - [x] `InputView` 이름 입력: null/빈 문자열/공백만 입력 시 `IllegalArgumentException`
+   - [ ] `InputView` 이름 입력: 쉼표(,) 기준 분리 후 각 토큰 trim, 빈 토큰(공백)/긴 토큰(5글자 이상)이 있으면 `IllegalArgumentException`
+   - [x] `InputView` 시도 횟수 입력: null/빈 문자열 입력 시 `IllegalArgumentException`
+   - [ ] `Parser.parseNames` 결과: 토큰 파싱이 제대로 되었는지 확인
+   - [ ] `Name` 값 객체: 공백/빈값/6자 이상 `IllegalArgumentException`
+   - [ ] `TryCount` 값 객체: 문자열 입력에서 자연수만 허용, 아니면 `IllegalArgumentException`
+2. 도메인 동작
+   - [ ] `RandomMovePolicy`: 경계값 검증(3 → 정지, 4 → 전진)
+   - [ ] `Car.tryMove(policy)`: 전진/정지에 따른 위치 변화 검증
+   - [ ] `Cars`: `maxPosition()` 및 `winners()`
+3. 출력 포맷 확인
+   - [ ] 최종 우승자 출력
