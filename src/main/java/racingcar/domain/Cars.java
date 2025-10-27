@@ -26,7 +26,7 @@ public class Cars {
 	 */
 	public Cars(List<Car> cars) {
 		if (cars == null || cars.isEmpty()) {
-			throw new RuntimeException("경주할 자동차는 1대 이상이어야 합니다.");
+			throw new IllegalArgumentException("경주할 자동차는 1대 이상이어야 합니다.");
 		}
 		this.cars = new ArrayList<>(cars);
 	}

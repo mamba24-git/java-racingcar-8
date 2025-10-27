@@ -40,7 +40,7 @@ public final class Car {
 	 */
 	public void tryMove(MovePolicy policy) {
 		if (policy == null) {
-			throw new RuntimeException("전진 방법 미지정");
+			throw new IllegalArgumentException("전진 방법 미지정");
 		}
 		if (policy.movable()) {
 			position.moveForward();
