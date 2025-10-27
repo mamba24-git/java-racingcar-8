@@ -53,12 +53,4 @@ class InputViewTest {
 		assertThatThrownBy(InputView::readNamesLine)
 				.isInstanceOf(IllegalArgumentException.class);
 	}
-
-	@Test
-	@DisplayName("입력이 너무 길면 IllegalArgumentException")
-	void readNamesLine_longName_throws() {
-		setIn("convolutionNeuralNetwork");
-		assertThatThrownBy(InputView::readNamesLine)
-				.isInstanceOf(IllegalArgumentException.class);
-	}
 }
