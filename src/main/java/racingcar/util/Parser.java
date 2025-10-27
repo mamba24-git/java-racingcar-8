@@ -28,13 +28,23 @@ public class Parser {
 	 * 구분자로 나눈 항목 중 빈 항목이 있는 경우 예외 발생 후 프로그램 종료
 	 */
 	public static List<String> parseNames(String line) {
-		if (line == null) {
+		if ((line == null) || (line.isEmpty())) {
+			throw new IllegalArgumentException("입력값이 비어있습니다.");
+		}
+		String line_trimmed = line.trim();
+		if (line_trimmed.isEmpty()) {
 			throw new IllegalArgumentException("입력값이 비어있습니다.");
 		}
 
 		String[] tokens = line.split(",");
 		List<String> names = new ArrayList<>();
 		for (String name : tokens) {
+			if (name != null) {
+				name = name.trim();
+			}
+			else {
+				name = "";
+			}
 			if (name.isEmpty()) {
 				throw new IllegalArgumentException("이름은 공백일 수 없습니다.");
 			}
