@@ -27,7 +27,7 @@
    - [x] `InputView` 이름 입력: null/빈 문자열/공백만 입력 시 `IllegalArgumentException`
    - [ ] `InputView` 이름 입력: 쉼표(,) 기준 분리 후 각 토큰 trim, 빈 토큰(공백)/긴 토큰(5글자 이상)이 있으면 `IllegalArgumentException`
    - [x] `InputView` 시도 횟수 입력: null/빈 문자열 입력 시 `IllegalArgumentException`
-   - [ ] `Parser.parseNames` 결과: 토큰 파싱이 제대로 되었는지 확인
+   - [x] `Parser.parseNames` 결과: 토큰 파싱이 제대로 되었는지 확인
    - [x] `Name` 값 객체: 공백/빈값/6자 이상 `IllegalArgumentException`
    - [ ] `TryCount` 값 객체: 문자열 입력에서 자연수만 허용, 아니면 `IllegalArgumentException`
 2. 도메인 동작
