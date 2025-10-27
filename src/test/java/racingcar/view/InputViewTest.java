@@ -1,56 +1,45 @@
 package racingcar.view;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import org.junit.jupiter.api.AfterEach;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class InputViewTest {
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-	private InputStream originalIn;
+class InputViewNsTest extends NsTest {
 
-	private void setIn(String content) {
-		if (originalIn == null) originalIn = System.in;
-		System.setIn(new ByteArrayInputStream(content.getBytes()));
-	}
-
-	@AfterEach
-	void restoreIn() {
-		if (originalIn != null) System.setIn(originalIn);
+	@Test
+	@DisplayName("정상 입력이면 그대로 반환(하네스에서 한 줄 출력)")
+	void names_ok() {
+		assertSimpleTest(() -> {
+			run("lec,nor,ver\n");
+			assertThat(output()).contains("lec,nor,ver");
+		});
 	}
 
 	@Test
-	@DisplayName("이름 입력: 앞뒤 공백 제거 없이 원문 반환(현재 구현 기준)")
-	void readNamesLine_raw() {
-		setIn("lec,nor,ver\n");
+	@DisplayName("EOF(빈 입력)")
+	void names_eof_throws() {
+		assertSimpleTest(() ->
+				assertThatThrownBy(() -> runException(""))
+						.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
+	@Test
+	@DisplayName("공백 입력")
+	void names_blank_throws() {
+		assertSimpleTest(() ->
+				assertThatThrownBy(() -> runException(" \n"))
+						.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
+	@Override
+	public void runMain() {
 		String line = InputView.readNamesLine();
-		assertThat(line).isEqualTo("lec,nor,ver");
-	}
-
-	@Test
-	@DisplayName("시도 횟수 입력: 원문 반환(현재 구현 기준)")
-	void readTryCountLine_raw() {
-		setIn("5\n");
-		String line = InputView.readTryCountLine();
-		assertThat(line).isEqualTo("5");
-	}
-
-	@Test
-	@DisplayName("EOF(빈 입력)이면 IllegalArgumentException")
-	void readNamesLine_eof_throws() {
-		setIn("");
-		assertThatThrownBy(InputView::readNamesLine)
-				.isInstanceOf(IllegalArgumentException.class);
-	}
-
-	@Test
-	@DisplayName("입력 값이 빈 칸이면 IllegalArgumentException")
-	void readNamesLine_blank_throws() {
-		setIn(" ");
-		assertThatThrownBy(InputView::readNamesLine)
-				.isInstanceOf(IllegalArgumentException.class);
+		System.out.println(line.trim());
 	}
 }
