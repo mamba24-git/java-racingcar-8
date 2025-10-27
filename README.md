@@ -29,7 +29,7 @@
    - [x] `InputView` 시도 횟수 입력: null/빈 문자열 입력 시 `IllegalArgumentException`
    - [x] `Parser.parseNames` 결과: 토큰 파싱이 제대로 되었는지 확인
    - [x] `Name` 값 객체: 공백/빈값/6자 이상 `IllegalArgumentException`
-   - [ ] `TryCount` 값 객체: 문자열 입력에서 자연수만 허용, 아니면 `IllegalArgumentException`
+   - [x] `TryCount` 값 객체: 문자열 입력에서 자연수만 허용, 아니면 `IllegalArgumentException`
 2. 도메인 동작
    - [ ] `RandomMovePolicy`: 경계값 검증(3 → 정지, 4 → 전진)
    - [ ] `Car.tryMove(policy)`: 전진/정지에 따른 위치 변화 검증
