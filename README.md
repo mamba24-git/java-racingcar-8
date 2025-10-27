@@ -32,5 +32,3 @@
 2. 도메인 동작
    - [x] `Car.tryMove(policy)`: 전진/정지에 따른 위치 변화 검증
    - [x] `Cars`: `maxPosition()` 및 `winners()`
-3. 출력 포맷 확인
-   - [ ] 최종 우승자 출력
