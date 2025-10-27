@@ -20,10 +20,10 @@ class InputViewNsTest extends NsTest {
 	}
 
 	@Test
-	@DisplayName("EOF(빈 입력)")
+	@DisplayName("빈 입력")
 	void names_eof_throws() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> runException(""))
+				assertThatThrownBy(() -> runException("\n"))
 						.isInstanceOf(IllegalArgumentException.class)
 		);
 	}
